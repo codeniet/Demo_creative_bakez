@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Bakes (@creative_bakez) | Luxury Custom Cakes, Bento Boxes, Cupcakes & Cakesicles</title>
+
+    <!-- Google Fonts: Instrument Serif (High-Fashion Editorial) & Plus Jakarta Sans (Luxury Clean UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        alabaster: '#FBF9F5',
+                        porcelain: '#F3EFE6',
+                        sand: '#E4DEC3',
+                        borderwarm: '#E5DFD3',
+                        espresso: '#181210',
+                        mocha: '#4A3C35',
+                        taupe: '#7D6E65',
+                        rose: {
+                            50: '#FDF5F6',
+                            100: '#F9E6E8',
+                            500: '#C86D77',
+                            600: '#B0525D',
+                        },
+                        pistachio: {
+                            100: '#E7F3EB',
+                            700: '#266841',
+                        },
+                        butter: '#F6E6B4'
+                    },
+                    fontFamily: {
+                        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* =========================================================
+           ULTRA-PREMIUM 60FPS GPU-ACCELERATED ANIMATION ENGINE
+           - Uses ONLY compositor properties (transform, opacity, clip-path)
+           - Driven by single passive requestAnimationFrame loop
+           ========================================================= */
+        :root {
+            --scroll-y: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background-color: #FBF9F5;
+            color: #181210;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .editorial-border {
+            border-color: #E5DFD3;
+        }
+
+        /* 1. Cinematic Opening Curtain Reveal */
+        #intro-curtain {
+            position: fixed;
+            inset: 0;
+            z-index: 120;
+            pointer-events: none;
+            display: flex;
+        }
+        .curtain-panel {
+            flex: 1;
+            background: #181210;
+            transform: scaleY(1);
+            transform-origin: top;
+            transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+            will-change: transform;
+        }
+        .curtain-panel:nth-child(2) {
+            transition-delay: 0.08s;
+        }
+        body.loaded .curtain-panel {
+            transform: scaleY(0);
+        }
+
+        /* 2. Staggered Hero Text Mask Reveal */
+        .word-mask {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: bottom;
+            padding-bottom: 0.06em;
+        }
+        .word-inner {
+            display: inline-block;
+            transform: translate3d(0, 115%, 0) rotate(3deg);
+            opacity: 0;
+            transition: transform 0.95s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease;
+            will-change: transform, opacity;
+        }
+        body.loaded .word-inner {
+            transform: translate3d(0, 0, 0) rotate(0deg);
+            opacity: 1;
+        }
+
+        /* 3. Scroll-Triggered Curtain Image Unveil & Staggered Cards */
+        .reveal-up {
+            opacity: 0;
+            transform: translate3d(0, 42px, 0) scale(0.98);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+        .reveal-up.in-view {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+
+        /* Clip-Path Image Curtain Unveil */
+        .curtain-img-wrap {
+            clip-path: inset(16% 6% 16% 6% round 24px);
+            transform: scale(0.96);
+            transition: clip-path 1.05s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: clip-path, transform;
+        }
+        .curtain-img-wrap.in-view {
+            clip-path: inset(0% 0% 0% 0% round 24px);
+            transform: scale(1);
+        }
+        .curtain-img-wrap img {
+            transform: scale(1.14);
+            transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+        .curtain-img-wrap.in-view img {
+            transform: scale(1);
+        }
+        .curtain-img-wrap:hover img {
+            transform: scale(1.06);
+        }
+
+        /* 4. 3D Perspective Tilt & Luxury Shimmer Cards */
+        .luxury-card {
+            background: #FFFFFF;
+            border: 1px solid #E5DFD3;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.35s ease;
+            will-change: transform;
+        }
+        .luxury-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 65%;
+            height: 100%;
+            background: linear-gradient(
+                110deg,
+                rgba(255,255,255,0) 0%,
+                rgba(246, 230, 180, 0.28) 50%,
+                rgba(255,255,255,0) 100%
+            );
+            transform: skewX(-20deg);
+            transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+        .luxury-card:hover {
+            transform: translate3d(0, -8px, 0);
+            border-color: #181210;
+            box-shadow: 0 22px 45px -16px rgba(24, 18, 16, 0.16);
+        }
+        .luxury-card:hover::after {
+            left: 140%;
+        }
+
+        /* 5. Continuous Rotating Stamp Badge */
+        .spin-slow {
+            animation: rotateStamp 18s linear infinite;
+            will-change: transform;
+        }
+        @keyframes rotateStamp {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* 6. Gentle Floating 3D Badges */
+        .float-gentle {
+            animation: floatY 4.5s ease-in-out infinite;
+            will-change: transform;
+        }
+        .float-gentle-delayed {
+            animation: floatY 5.2s ease-in-out 1.4s infinite;
+            will-change: transform;
+        }
+        @keyframes floatY {
+            0%, 100% { transform: translate3d(0, 0px, 0); }
+            50% { transform: translate3d(0, -10px, 0); }
+        }
+
+        /* 7. Luxury Shimmer Button */
+        .shimmer-btn {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+            will-change: transform;
+        }
+        .shimmer-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+            transform: skewX(-25deg);
+            transition: left 0.65s ease;
+        }
+        .shimmer-btn:hover::before {
+            left: 130%;
+        }
+
+        /* 8. Pure CSS GPU Marquee */
+        .ticker-wrap {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-move {
+            display: inline-flex;
+            animation: tickerSlide 26s linear infinite;
+            will-change: transform;
+        }
+        @keyframes tickerSlide {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* 9. Sticky Stacking Process Cards */
+        .stack-card {
+            position: sticky;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+
+        /* 10. Bag Bump Animation when item added */
+        @keyframes bagBounce {
+            0%, 100% { transform: scale3d(1, 1, 1); }
+            35% { transform: scale3d(1.12, 1.12, 1); }
+            65% { transform: scale3d(0.95, 0.95, 1); }
+        }
+        .bag-bump {
+            animation: bagBounce 0.48s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Hide Scrollbar */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="selection:bg-espresso selection:text-alabaster pb-24">
+
+    <!-- =========================================================
+         OPENING CINEMATIC SPLIT CURTAIN
+         ========================================================= -->
+    <div id="intro-curtain">
+        <div class="curtain-panel"></div>
+        <div class="curtain-panel"></div>
+    </div>
+
+    <!-- =========================================================
+         TOP SCROLL PROGRESS RIBBON (GPU SCALE-X)
+         ========================================================= -->
+    <div class="fixed top-0 left-0 right-0 h-1 bg-porcelain z-[100] pointer-events-none">
+        <div id="scroll-progress" class="h-full bg-rose-600 origin-left scale-x-0 transition-transform duration-75"></div>
+    </div>
+
+    <!-- Toast Notification Stack -->
+    <div id="toast-stack" class="fixed top-24 right-5 z-[110] flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- =========================================================
+         STICKY BOTTOM-RIGHT FLOATING PRE-ORDER BAG PILL
+         (Follows user all the way to the bottom of the page!)
+         ========================================================= -->
+    <div class="fixed bottom-5 right-4 sm:bottom-7 sm:right-7 z-[90] flex items-center gap-2.5">
+        <!-- Quick WhatsApp Floating Circle -->
+        <a href="https://wa.me/919446430534?text=Hi%20Creative%20Bakes!%20I%20would%20like%20to%20pre-order%20a%20custom%20cake."
+           target="_blank" rel="noopener noreferrer"
+           title="WhatsApp Creative Bakes: 9446430534"
+           class="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-pistachio-700 hover:bg-emerald-700 text-white shadow-xl flex items-center justify-center text-2xl transition-transform hover:scale-105 border-2 border-white">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+        <!-- Main Sticky Floating Order Bag Button (Always Accessible at Bottom) -->
+        <button id="floating-bag-pill" onclick="toggleDrawer(true)"
+                class="shimmer-btn group flex items-center gap-3.5 pl-4 pr-5 py-3 sm:py-3.5 rounded-full bg-espresso text-alabaster shadow-2xl border-2 border-butter/60 hover:border-butter">
+            <div class="relative w-10 h-10 rounded-full bg-rose-600 text-white flex items-center justify-center text-base">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span id="floating-bag-count" class="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-butter text-espresso text-[11px] font-extrabold flex items-center justify-center shadow">
+                    2
+                </span>
+            </div>
+            <div class="text-left">
+                <span class="text-[10px] uppercase tracking-[0.18em] text-butter font-bold block leading-none">
+                    View Pre-Order Bag
+                </span>
+                <div class="flex items-center gap-2 mt-1">
+                    <span id="floating-bag-total" class="font-serif text-xl sm:text-2xl text-white leading-none font-bold">₹2,048</span>
+                    <span class="text-[11px] text-rose-100 group-hover:translate-x-0.5 transition-transform">Checkout →</span>
+                </div>
+            </div>
+        </button>
+    </div>
+
+    <!-- =========================================================
+         TOP EDITORIAL ANNOUNCEMENT BAR
+         ========================================================= -->
+    <div class="bg-espresso text-alabaster text-[11px] tracking-widest uppercase py-2.5 px-4 border-b border-espresso">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5">
+                <span class="px-2 py-0.5 rounded bg-pistachio-700 text-white font-bold text-[10px]">FSSAI REGISTERED</span>
+                <span class="font-medium">Custom Cakes • Homemade 🎂 • Cupcakes 🧁 • Cake Pops 🍭 • Cakesicles</span>
+                <span class="hidden sm:inline text-butter font-semibold">(Pre-Orders Only)</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="tel:9446430534" class="hover:text-butter font-semibold transition-colors">
+                    <i class="fa-solid fa-phone text-rose-500 mr-1"></i>Call: 9446430534
+                </a>
+                <span class="hidden md:inline text-taupe">|</span>
+                <a href="https://www.instagram.com/creative_bakez" target="_blank" rel="noopener noreferrer" class="hidden md:inline hover:text-butter underline">
+                    @creative_bakez (539+ Posts)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         1. FIXED FLOATING LUXURY PILL HEADER
+         ========================================================= -->
+    <header class="sticky top-0 z-[75] bg-alabaster/95 border-b editorial-border py-3.5 px-4 sm:px-8 transition-shadow" id="main-navbar">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            
+            <!-- Left: Brand Identity -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-2xl bg-espresso text-alabaster flex flex-col items-center justify-center border border-espresso group-hover:bg-rose-600 group-hover:border-rose-600 transition-colors">
+                    <span class="font-serif italic text-xl leading-none">CB</span>
+                    <span class="text-[7px] tracking-widest uppercase text-butter">539+</span>
+                </div>
+                <div>
+                    <span class="font-serif text-2xl sm:text-3xl tracking-tight text-espresso block leading-none">Creative Bakes</span>
+                    <span class="text-[10px] uppercase tracking-[0.18em] text-taupe block mt-0.5">@creative_bakez • FSSAI Studio</span>
+                </div>
+            </a>
+
+            <!-- Center: Floating Pill Navigation -->
+            <nav class="hidden lg:flex items-center bg-porcelain p-1.5 rounded-full border editorial-border text-xs font-semibold tracking-wider uppercase">
+                <a href="#viral-showcase" class="px-4 py-2 rounded-full bg-white text-espresso shadow-sm transition-colors">Viral Reel</a>
+                <a href="#lookbook" class="px-4 py-2 rounded-full text-mocha hover:text-espresso transition-colors">Lookbook Menu</a>
+                <a href="#cake-visualizer" class="px-4 py-2 rounded-full text-mocha hover:text-espresso transition-colors flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                    <span>3D/SVG Cake Studio</span>
+                </a>
+                <a href="#craft-stack" class="px-4 py-2 rounded-full text-mocha hover:text-espresso transition-colors">Our Craft</a>
+                <a href="#real-feed" class="px-4 py-2 rounded-full text-mocha hover:text-espresso transition-colors">539+ Bakes</a>
+            </nav>
+
+            <!-- Right: Direct Hotline + Top Order Bag Button -->
+            <div class="flex items-center gap-2.5">
+                <a href="tel:9446430534" 
+                   class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-porcelain hover:bg-sand/60 text-espresso text-xs font-semibold transition-colors">
+                    <i class="fa-solid fa-phone-volume text-rose-600 text-xs"></i>
+                    <span>9446430534</span>
+                </a>
+
+                <button id="top-bag-btn" onclick="toggleDrawer(true)" class="shimmer-btn flex items-center gap-2.5 px-4 sm:px-5 py-2.5 rounded-full bg-espresso hover:bg-mocha text-alabaster text-xs font-semibold uppercase tracking-wider">
+                    <i class="fa-solid fa-bag-shopping text-rose-500"></i>
+                    <span class="hidden sm:inline">Pre-Order Bag</span>
+                    <span id="header-bag-count" class="px-2 py-0.5 rounded-full bg-butter text-espresso text-[11px] font-bold">2</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- =========================================================
+         2. HERO SECTION WITH PARALLAX, ROTATING STAMP & STAGGERED TEXT
+         ========================================================= -->
+    <section class="relative py-8 sm:py-14 px-4 sm:px-8 max-w-7xl mx-auto overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            
+            <!-- Left Editorial Cover Card (7 Columns) -->
+            <div class="lg:col-span-7 bg-porcelain rounded-[32px] p-6 sm:p-10 lg:p-12 border editorial-border flex flex-col justify-between relative overflow-hidden">
+                
+                <!-- Floating Rotating Circular Stamp Badge (Top Right of Card) -->
+                <div class="hidden sm:flex items-center justify-center w-28 h-28 absolute top-6 right-6 pointer-events-none">
+                    <svg viewBox="0 0 120 120" class="w-full h-full spin-slow">
+                        <defs>
+                            <path id="circlePath" d="M 60, 60 m -46, 0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0"/>
+                        </defs>
+                        <text fill="#181210" font-size="9.5" font-weight="700" letter-spacing="2.2">
+                            <textPath href="#circlePath">
+                                • FSSAI REGISTERED • PRE-ORDERS ONLY • 539+ BAKES
+                            </textPath>
+                        </text>
+                    </svg>
+                    <span class="absolute font-serif italic text-2xl text-rose-600">🎂</span>
+                </div>
+
+                <!-- Top Status Pill -->
+                <div class="flex flex-wrap items-center gap-2 mb-6 pr-24">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border editorial-border text-[11px] font-semibold uppercase tracking-wider text-espresso shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                        <span>100% Homemade Studio • Pre-Orders Only</span>
+                    </div>
+                </div>
+
+                <!-- Staggered Animated Magazine Headline -->
+                <div class="my-2">
+                    <h1 class="font-serif text-5xl sm:text-6xl lg:text-[72px] leading-[0.98] tracking-tight text-espresso">
+                        <span class="word-mask"><span class="word-inner" style="transition-delay:0.15s">Bespoke</span></span>
+                        <span class="word-mask"><span class="word-inner italic font-normal text-rose-600" style="transition-delay:0.25s">Couture</span></span>
+                        <span class="word-mask"><span class="word-inner" style="transition-delay:0.35s">Cakes</span></span>
+                        <span class="word-mask"><span class="word-inner" style="transition-delay:0.45s">&amp;</span></span>
+                        <span class="word-mask"><span class="word-inner italic font-normal" style="transition-delay:0.55s">Sweet</span></span>
+                        <span class="word-mask"><span class="word-inner" style="transition-delay:0.65s">Artistry.</span></span>
+                    </h1>
+                    <p class="mt-5 text-mocha text-base sm:text-lg leading-relaxed max-w-xl reveal-up in-view">
+                        Crafted fresh in our <strong>FSSAI-Registered home kitchen</strong>. From viral <strong>Coquette Black Ribbon Cakes</strong> and <strong>"I Choose You" Bento Combos</strong> to grand <strong>2-Tier Spider-Man, Ocean &amp; Harry Potter Cakes</strong>, Heart Brownie Slabs, Cupcakes, Cake Pops &amp; Belgian Cakesicles.
+                    </p>
+                </div>
+
+                <!-- Interactive Quick-Jump Category Pills -->
+                <div class="my-6">
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-taupe font-bold block mb-2.5">Explore Signature Collections</span>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="jumpToCategory('Coquette & Theme Cakes')" class="shimmer-btn px-3.5 py-2 rounded-xl bg-white hover:bg-espresso hover:text-alabaster border editorial-border text-xs font-semibold">
+                            🎀 Coquette &amp; Kids Theme Cakes
+                        </button>
+                        <button onclick="jumpToCategory('Bento & Combos')" class="shimmer-btn px-3.5 py-2 rounded-xl bg-white hover:bg-espresso hover:text-alabaster border editorial-border text-xs font-semibold">
+                            🍱 Bento + Cupcake Combos
+                        </button>
+                        <button onclick="jumpToCategory('Truffle & Brownie Slabs')" class="shimmer-btn px-3.5 py-2 rounded-xl bg-white hover:bg-espresso hover:text-alabaster border editorial-border text-xs font-semibold">
+                            🍫 Truffle &amp; Heart Brownies
+                        </button>
+                        <button onclick="jumpToCategory('Cupcakes & Cakesicles')" class="shimmer-btn px-3.5 py-2 rounded-xl bg-white hover:bg-espresso hover:text-alabaster border editorial-border text-xs font-semibold">
+                            🍭 Cupcakes, Cake Pops &amp; Cakesicles
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bottom CTAs & Direct Contact -->
+                <div class="pt-6 border-t editorial-border flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <a href="#cake-visualizer" class="magnetic-btn shimmer-btn px-6 py-3.5 rounded-full bg-espresso hover:bg-rose-600 text-alabaster text-xs font-semibold uppercase tracking-widest inline-flex items-center gap-2 shadow-lg">
+                            <i class="fa-solid fa-wand-magic-sparkles text-butter"></i>
+                            <span>Design Your Custom Cake</span>
+                        </a>
+                        <a href="#lookbook" class="magnetic-btn px-5 py-3.5 rounded-full bg-white hover:bg-sand/40 text-espresso border editorial-border text-xs font-semibold uppercase tracking-widest transition-colors">
+                            Browse Menu
+                        </a>
+                    </div>
+                    <div class="text-left sm:text-right">
+                        <span class="text-[10px] uppercase tracking-widest text-taupe block">Direct Pre-Order Line</span>
+                        <a href="tel:9446430534" class="font-serif text-2xl text-espresso hover:text-rose-600 font-semibold">9446430534</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Parallax Interactive 3-Card Bento Mosaic (5 Columns) -->
+            <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4" data-parallax="-0.04">
+                
+                <!-- Top Wide Bento Card: Coquette Black Ribbon Cake ("Happy Birthday Catherine") -->
+                <div onclick="loadVisualizerPreset('1-Tier Tall Cake (1 Kg)', '#FBF9F5', 'bow', 'Happy Birthday Catherine')" 
+                     class="sm:col-span-2 luxury-card rounded-[28px] p-4 cursor-pointer group relative">
+                    <div class="grid grid-cols-12 gap-4 items-center">
+                        <div class="col-span-5 aspect-square rounded-2xl overflow-hidden bg-porcelain curtain-img-wrap in-view">
+                            <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Coquette Black Ribbon Cake" 
+                                 loading="eager"
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div class="col-span-7 space-y-1.5 pr-2">
+                            <span class="inline-block px-2.5 py-0.5 rounded-full bg-espresso text-butter text-[10px] font-bold uppercase tracking-wider float-gentle">
+                                🎀 Viral on @creative_bakez
+                            </span>
+                            <h2 class="font-serif text-2xl text-espresso leading-tight">Coquette Black Bow &amp; Hearts Cake</h2>
+                            <p class="text-xs text-mocha line-clamp-2">Our iconic "Happy Birthday Catherine" vintage ivory cake with black satin bows &amp; piped hearts.</p>
+                            <div class="pt-1 flex items-center justify-between">
+                                <span class="font-serif text-xl font-bold text-espresso">₹1,299 <span class="text-[11px] font-sans font-normal text-taupe">/ 1 Kg</span></span>
+                                <span class="text-xs font-semibold text-rose-600 group-hover:translate-x-1 transition-transform">Customize ↗</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Left Bento Card: Korean Bento + 2 Cupcakes ("I Choose You Everyday") -->
+                <div onclick="loadVisualizerPreset('Bento + 2 Cupcakes Combo', '#FDF5F6', 'hearts', 'I Choose You Everyday')"
+                     class="luxury-card rounded-[28px] p-4 cursor-pointer group flex flex-col justify-between">
+                    <div>
+                        <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-porcelain mb-3 relative curtain-img-wrap in-view">
+                            <img src="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=500&q=80" 
+                                 alt="Korean Bento and Cupcakes Combo" 
+                                 loading="eager"
+                                 class="w-full h-full object-cover">
+                            <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-rose-600 text-white text-[10px] font-bold uppercase float-gentle-delayed">
+                                Couple Combo
+                            </span>
+                        </div>
+                        <h3 class="font-serif text-xl text-espresso leading-snug">"I Choose You" Bento + 2 Cupcakes</h3>
+                        <p class="text-[11px] text-mocha mt-1">Cute couple comic doodles + red hearts in eco lunchbox.</p>
+                    </div>
+                    <div class="pt-3 mt-2 border-t editorial-border flex items-center justify-between">
+                        <span class="font-serif text-xl font-bold text-espresso">₹749</span>
+                        <span class="text-[11px] font-semibold text-espresso group-hover:text-rose-600">Try Live →</span>
+                    </div>
+                </div>
+
+                <!-- Bottom Right Bento Card: 2-Tier Kids Theme Cake (Spider-Man / Ocean / HP) -->
+                <div onclick="loadVisualizerPreset('2-Tier Celebration Cake (2.5 Kg)', '#D8EEFE', 'hero', 'Arvyn Rao Turns 2')"
+                     class="luxury-card rounded-[28px] p-4 cursor-pointer group flex flex-col justify-between">
+                    <div>
+                        <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-porcelain mb-3 relative curtain-img-wrap in-view">
+                            <img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&w=500&q=80" 
+                                 alt="Kids 2-Tier Theme Cake" 
+                                 loading="eager"
+                                 class="w-full h-full object-cover">
+                            <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-espresso text-butter text-[10px] font-bold uppercase float-gentle">
+                                2-Tier Milestones
+                            </span>
+                        </div>
+                        <h3 class="font-serif text-xl text-espresso leading-snug">Spider-Man, Ocean, HP &amp; Cars</h3>
+                        <p class="text-[11px] text-mocha mt-1">Custom 1st–10th birthday milestones &amp; handcrafted toppers.</p>
+                    </div>
+                    <div class="pt-3 mt-2 border-t editorial-border flex items-center justify-between">
+                        <span class="font-serif text-xl font-bold text-espresso">₹2,499</span>
+                        <span class="text-[11px] font-semibold text-espresso group-hover:text-rose-600">Try Live →</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         PURE CSS HARDWARE-ACCELERATED MARQUEE STRIP
+         ========================================================= -->
+    <div class="border-y editorial-border bg-white py-3.5 my-2 ticker-wrap">
+        <div class="ticker-move items-center gap-8 text-xs font-semibold uppercase tracking-[0.2em] text-espresso">
+            <span>🎂 539+ Custom Cakes Baked</span><span>•</span>
+            <span class="text-pistachio-700">🛡️ FSSAI Registered Home Bakery</span><span>•</span>
+            <span>🎀 Coquette Black Ribbon Cakes</span><span>•</span>
+            <span>🍱 "Mr &amp; Mrs" &amp; "I Choose You" Bento Combos</span><span>•</span>
+            <span>🕸️ Spider-Man, Ocean &amp; Harry Potter Cakes</span><span>•</span>
+            <span>🍫 Heart Brownie Slabs &amp; Choco Truffle</span><span>•</span>
+            <span>🍭 Custom Cupcakes, Cake Pops &amp; Cakesicles</span><span>•</span>
+            <span>📞 Pre-Orders: 9446430534</span><span>•</span>
+            <!-- Duplicate for seamless loop -->
+            <span>🎂 539+ Custom Cakes Baked</span><span>•</span>
+            <span class="text-pistachio-700">🛡️ FSSAI Registered Home Bakery</span><span>•</span>
+            <span>🎀 Coquette Black Ribbon Cakes</span><span>•</span>
+            <span>🍱 "Mr &amp; Mrs" &amp; "I Choose You" Bento Combos</span><span>•</span>
+            <span>🕸️ Spider-Man, Ocean &amp; Harry Potter Cakes</span><span>•</span>
+            <span>🍫 Heart Brownie Slabs &amp; Choco Truffle</span><span>•</span>
+            <span>🍭 Custom Cupcakes, Cake Pops &amp; Cakesicles</span><span>•</span>
+            <span>📞 Pre-Orders: 9446430534</span><span>•</span>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         3. INTERACTIVE HORIZONTAL SHOWCASE REEL ("THE VIRAL COLLECTION")
+         ========================================================= -->
+    <section id="viral-showcase" class="py-16 sm:py-20 px-4 sm:px-8 max-w-7xl mx-auto overflow-hidden">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 reveal-up">
+            <div>
+                <span class="text-[11px] uppercase tracking-[0.22em] text-rose-600 font-bold block mb-1.5">
+                    ✨ Signature Spotlight Reel
+                </span>
+                <h2 class="font-serif text-4xl sm:text-5xl text-espresso">Most-Loved Creations on @creative_bakez</h2>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="scrollShowcase(-360)" class="w-11 h-11 rounded-full bg-porcelain hover:bg-espresso hover:text-alabaster border editorial-border flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-arrow-left text-xs"></i>
+                </button>
+                <button onclick="scrollShowcase(360)" class="w-11 h-11 rounded-full bg-espresso hover:bg-rose-600 text-alabaster flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Horizontal Smooth Snap Track -->
+        <div id="showcase-track" class="flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-4 pt-2">
+            
+            <!-- Slide 1: Catherine Coquette Black Ribbon -->
+            <div class="min-w-[295px] sm:min-w-[350px] snap-start luxury-card rounded-[28px] p-5 flex flex-col justify-between">
+                <div>
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-porcelain mb-4 relative curtain-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?auto=format&fit=crop&w=600&q=80" alt="Coquette Black Bow Cake" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-espresso text-butter text-[10px] font-bold uppercase">
+                            🎀 Coquette Series
+                        </span>
+                    </div>
+                    <h3 class="font-serif text-2xl text-espresso">"Happy Birthday Catherine" Bow Cake</h3>
+                    <p class="text-xs text-mocha mt-1 leading-relaxed">Vintage piped ivory buttercream adorned with real satin black bows and delicate mini black hearts.</p>
+                </div>
+                <div class="pt-4 mt-4 border-t editorial-border flex items-center justify-between">
+                    <span class="font-serif text-2xl font-bold text-espresso">₹1,299</span>
+                    <button onclick="quickAddLookbookItem('c1')" class="shimmer-btn px-4 py-2 rounded-full bg-espresso hover:bg-rose-600 text-alabaster text-xs font-semibold uppercase tracking-wider">
+                        + Add to Bag
+                    </button>
+                </div>
+            </div>
+
+            <!-- Slide 2: Arvyn Rao 2nd Birthday Ocean Cake -->
+            <div class="min-w-[295px] sm:min-w-[350px] snap-start luxury-card rounded-[28px] p-5 flex flex-col justify-between">
+                <div>
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-porcelain mb-4 relative curtain-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?auto=format&fit=crop&w=600&q=80" alt="Arvyn Rao Ocean Cake" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-sky-700 text-white text-[10px] font-bold uppercase">
+                            🐬 Kids Milestone
+                        </span>
+                    </div>
+                    <h3 class="font-serif text-2xl text-espresso">"Arvyn Rao Turns 2" Ocean Reef Cake</h3>
+                    <p class="text-xs text-mocha mt-1 leading-relaxed">Pastel aqua frosting sculpted with 3D clownfish, baby dolphin, sea turtle, shells, and edible sand.</p>
+                </div>
+                <div class="pt-4 mt-4 border-t editorial-border flex items-center justify-between">
+                    <span class="font-serif text-2xl font-bold text-espresso">₹1,899</span>
+                    <button onclick="quickAddLookbookItem('c5')" class="shimmer-btn px-4 py-2 rounded-full bg-espresso hover:bg-rose-600 text-alabaster text-xs font-semibold uppercase tracking-wider">
+                        + Add to Bag
+                    </button>
+                </div>
+            </div>
+
+            <!-- Slide 3: I Choose You Bento + Cupcakes -->
+            <div class="min-w-[295px] sm:min-w-[350px] snap-start luxury-card rounded-[28px] p-5 flex flex-col justify-between">
+                <div>
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-porcelain mb-4 relative curtain-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=600&q=80" alt="Bento and Cupcakes" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-rose-600 text-white text-[10px] font-bold uppercase">
+                            🍱 Bento + Cupcakes
+                        </span>
+                    </div>
+                    <h3 class="font-serif text-2xl text-espresso">"I Choose You Everyday" Gift Box</h3>
+                    <p class="text-xs text-mocha mt-1 leading-relaxed">Hand-drawn comic couple bento cake paired with 2 matching illustrated cupcakes in an eco box.</p>
+                </div>
+                <div class="pt-4 mt-4 border-t editorial-border flex items-center justify-between">
+                    <span class="font-serif text-2xl font-bold text-espresso">₹749</span>
+                    <button onclick="quickAddLookbookItem('c2')" class="shimmer-btn px-4 py-2 rounded-full bg-espresso hover:bg-rose-600 text-alabaster text-xs font-semibold uppercase tracking-wider">
+                        + Add to Bag
+                    </button>
+                </div>
+            </div>
+
+            <!-- Slide 4: Nithya Heart Brownie Slab -->
+            <div class="min-w-[295px] sm:min-w-[350px] snap-start luxury-card rounded-[28px] p-5 flex flex-col justify-between">
+                <div>
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-porcelain mb-4 relative curtain-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80" alt="Heart Brownie Slab" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-espresso text-butter text-[10px] font-bold uppercase">
+                            🍫 Fudgy Brownie Heart
+                        </span>
+                    </div>
+                    <h3 class="font-serif text-2xl text-espresso">"Happy Birthday Nithya" Brownie Heart</h3>
+                    <p class="text-xs text-mocha mt-1 leading-relaxed">500g dense dark chocolate brownie heart drizzled with glossy ganache and pink fondant hearts.</p>
+                </div>
+                <div class="pt-4 mt-4 border-t editorial-border flex items-center justify-between">
+                    <span class="font-serif text-2xl font-bold text-espresso">₹699</span>
+                    <button onclick="quickAddLookbookItem('c7')" class="shimmer-btn px-4 py-2 rounded-full bg-espresso hover:bg-rose-600 text-alabaster text-xs font-semibold uppercase tracking-wider">
+                        + Add to Bag
+                    </button>
+                </div>
+            </div>
+
+            <!-- Slide 5: Spider-Man 2-Tier 3rd Birthday Cake -->
+            <div class="min-w-[295px] sm:min-w-[350px] snap-start luxury-card rounded-[28px] p-5 flex flex-col justify-between">
+                <div>
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-porcelain mb-4 relative curtain-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&w=600&q=80" alt="Spider-Man 2 Tier Cake" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-rose-600 text-white text-[10px] font-bold uppercase">
+                            🕸️ 2-Tier Grand
+                        </span>
+                    </div>
+                    <h3 class="font-serif text-2xl text-espresso">Spider-Man 2-Tier 3rd Birthday Cake</h3>
+                    <p class="text-xs text-mocha mt-1 leading-relaxed">Two-tier sky blue &amp; white marvel centerpiece with web toppers, city silhouette, and silver pearls.</p>
+                </div>
+                <div class="pt-4 mt-4 border-t editorial-border flex items-center justify-between">
+                    <span class="font-serif text-2xl font-bold text-espresso">₹2,499</span>
+                    <button onclick="quickAddLookbookItem('c4')" class="shimmer-btn px-4 py-2 rounded-full bg-espresso hover:bg-rose-600 text-alabaster text-xs font-semibold uppercase tracking-wider">
+                        + Add to Bag
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- =========================================================
+         4. EDITORIAL LOOKBOOK MENU (STAGGERED SCROLL REVEAL)
+         ========================================================= -->
+    <section id="lookbook" class="py-14 sm:py-20 px-4 sm:px-8 max-w-7xl mx-auto">
+        
+        <!-- Header & Eggless Switch -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 reveal-up">
+            <div>
+                <span class="text-[11px] uppercase tracking-[0.22em] text-rose-600 font-bold block mb-1.5">Curated Pre-Order Catalogue</span>
+                <h2 class="font-serif text-4xl sm:text-5xl text-espresso">The Creative Bakes Lookbook</h2>
+            </div>
+
+            <!-- Instant Eggless Badge & Filter -->
+            <div class="flex flex-wrap items-center gap-3">
+                <label class="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-porcelain border editorial-border cursor-pointer select-none text-xs font-semibold text-espresso hover:border-espresso transition-colors">
+                    <input type="checkbox" id="global-eggless-toggle" onchange="toggleGlobalEggless(this.checked)" class="accent-pistachio-700 w-4 h-4 rounded">
+                    <span>Order as 100% Eggless</span>
+                    <span class="px-2 py-0.5 rounded bg-pistachio-100 text-pistachio-700 text-[10px] font-bold">Available on All</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-4 mb-8 border-b editorial-border">
+            <button onclick="setLookbookCategory('all')" data-tab="all" class="lookbook-tab shimmer-btn px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-espresso text-alabaster shrink-0">
+                All Signatures (10)
+            </button>
+            <button onclick="setLookbookCategory('Coquette & Theme Cakes')" data-tab="Coquette & Theme Cakes" class="lookbook-tab shimmer-btn px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-porcelain text-mocha hover:text-espresso shrink-0">
+                🎀 Coquette &amp; Kids Theme Cakes
+            </button>
+            <button onclick="setLookbookCategory('Bento & Combos')" data-tab="Bento & Combos" class="lookbook-tab shimmer-btn px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-porcelain text-mocha hover:text-espresso shrink-0">
+                🍱 Bento &amp; Cupcake Combos
+            </button>
+            <button onclick="setLookbookCategory('Truffle & Brownie Slabs')" data-tab="Truffle & Brownie Slabs" class="lookbook-tab shimmer-btn px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-porcelain text-mocha hover:text-espresso shrink-0">
+                🍫 Truffle &amp; Heart Brownie Slabs
+            </button>
+            <button onclick="setLookbookCategory('Cupcakes & Cakesicles')" data-tab="Cupcakes & Cakesicles" class="lookbook-tab shimmer-btn px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-porcelain text-mocha hover:text-espresso shrink-0">
+                🍭 Cupcakes, Cake Pops &amp; Cakesicles
+            </button>
+        </div>
+
+        <!-- Asymmetric Bento Lookbook Grid -->
+        <div id="lookbook-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Populated dynamically via JS -->
+        </div>
+    </section>
+
+    <!-- =========================================================
+         5. LIVE INTERACTIVE SVG CAKE & BENTO VISUALIZER STUDIO
+         ========================================================= -->
+    <section id="cake-visualizer" class="py-16 sm:py-20 px-4 sm:px-8 bg-porcelain border-y editorial-border">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 reveal-up">
+                <div>
+                    <span class="text-[11px] uppercase tracking-[0.22em] text-rose-600 font-bold block mb-1.5">Interactive Customizer Studio</span>
+                    <h2 class="font-serif text-4xl sm:text-5xl text-espresso">Live Cake &amp; Bento Visualizer</h2>
+                </div>
+                <p class="text-xs sm:text-sm text-mocha max-w-md">
+                    Experiment with cake tiers, buttercream shades, ribbon/theme toppers, and live cake writing. Watch your custom preview morph in real time!
+                </p>
+            </div>
+
+            <!-- Visualizer 12-Column Split -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left: Live Dynamic SVG Cake Illustration Stage (5 Columns) -->
+                <div class="lg:col-span-5 bg-white rounded-[28px] p-6 sm:p-8 border editorial-border lg:sticky lg:top-24 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <span id="vis-badge-style" class="px-3 py-1 rounded-full bg-porcelain text-espresso text-[11px] font-bold uppercase tracking-wider">
+                            1-Tier Tall Cake (1 Kg)
+                        </span>
+                        <span id="vis-badge-eggless" class="px-2.5 py-1 rounded-full bg-pistachio-100 text-pistachio-700 text-[10px] font-bold uppercase">
+                            ✓ 100% Homemade
+                        </span>
+                    </div>
+
+                    <!-- Interactive SVG Stage -->
+                    <div id="svg-preview-box" class="bg-alabaster rounded-2xl border editorial-border p-6 flex flex-col items-center justify-center min-h-[320px] relative transition-transform duration-300">
+                        
+                        <!-- Dynamic SVG Cake Drawing -->
+                        <svg id="cake-svg" viewBox="0 0 320 260" class="w-full max-w-[300px] h-auto overflow-visible">
+                            <!-- Gold Cake Board -->
+                            <ellipse cx="160" cy="232" rx="125" ry="14" fill="#D4AF7A" stroke="#181210" stroke-width="2"/>
+                            <ellipse cx="160" cy="229" rx="118" ry="11" fill="#F6E6B4"/>
+
+                            <!-- Bottom / Main Tier Group -->
+                            <g id="svg-main-tier">
+                                <rect id="svg-bottom-body" x="65" y="125" width="190" height="102" rx="14" fill="#FBF9F5" stroke="#181210" stroke-width="2.5" class="transition-colors duration-300"/>
+                                <ellipse id="svg-bottom-top" cx="160" cy="125" rx="95" ry="18" fill="#FFFFFF" stroke="#181210" stroke-width="2.5" class="transition-colors duration-300"/>
+                                <!-- Bottom Piped Pearl Border -->
+                                <g fill="#FFFFFF" stroke="#181210" stroke-width="1.5">
+                                    <circle cx="75" cy="225" r="6"/><circle cx="92" cy="227" r="6"/><circle cx="110" cy="228" r="6"/>
+                                    <circle cx="128" cy="229" r="6"/><circle cx="146" cy="229" r="6"/><circle cx="164" cy="229" r="6"/>
+                                    <circle cx="182" cy="229" r="6"/><circle cx="200" cy="228" r="6"/><circle cx="218" cy="227" r="6"/>
+                                    <circle cx="235" cy="226" r="6"/><circle cx="248" cy="224" r="6"/>
+                                </g>
+                            </g>
+
+                            <!-- Optional Top 2nd Tier (Shown when 2-Tier is selected) -->
+                            <g id="svg-second-tier" class="hidden">
+                                <rect id="svg-top-body" x="95" y="58" width="130" height="68" rx="10" fill="#FBF9F5" stroke="#181210" stroke-width="2.5" class="transition-colors duration-300"/>
+                                <ellipse id="svg-top-surface" cx="160" cy="58" rx="65" ry="13" fill="#FFFFFF" stroke="#181210" stroke-width="2.5" class="transition-colors duration-300"/>
+                            </g>
+
+                            <!-- Dynamic Decorations Layer (Coquette Bows / Hearts / Hero / Rosettes) -->
+                            <g id="svg-decor-layer">
+                                <text x="95" y="168" font-size="22">🎀</text>
+                                <text x="202" y="168" font-size="22">🎀</text>
+                                <text x="148" y="185" font-size="18">🖤</text>
+                                <text x="118" y="205" font-size="13">🖤</text>
+                                <text x="185" y="205" font-size="13">🖤</text>
+                            </g>
+
+                            <!-- Floating Cake Topper Plaque -->
+                            <g id="svg-topper-group">
+                                <line x1="160" y1="38" x2="160" y2="118" stroke="#181210" stroke-width="2"/>
+                                <rect x="65" y="10" width="190" height="34" rx="17" fill="#181210"/>
+                                <text id="svg-topper-text" x="160" y="31" text-anchor="middle" fill="#F6E6B4" font-family="'Instrument Serif', serif" font-style="italic" font-size="16">
+                                    Happy Birthday Catherine
+                                </text>
+                            </g>
+                        </svg>
+
+                        <!-- Selected Specs Strip -->
+                        <div class="w-full mt-4 pt-3 border-t editorial-border flex items-center justify-between text-xs text-mocha">
+                            <span>Flavor: <strong id="vis-flavor-label" class="text-espresso">Dutch Chocolate Truffle</strong></span>
+                            <span>Style: <strong id="vis-decor-label" class="text-rose-600">Coquette Black Bows</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- Price & Add to Bag Row -->
+                    <div class="mt-6 flex items-center justify-between gap-4">
+                        <div>
+                            <span class="text-[10px] uppercase tracking-widest text-taupe block">Estimated Price</span>
+                            <span id="vis-price-display" class="font-serif text-4xl text-espresso font-bold">₹1,299</span>
+                        </div>
+                        <button onclick="addVisualizedCakeToBag()" class="shimmer-btn px-6 py-3.5 rounded-full bg-espresso hover:bg-rose-600 text-alabaster text-xs font-semibold uppercase tracking-widest flex items-center gap-2 shadow-lg">
+                            <i class="fa-solid fa-plus text-butter"></i>
+                            <span>Add Custom Cake</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right: Step-by-Step Controls (7 Columns) -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- Control 1: Choose Format & Size -->
+                    <div class="bg-white rounded-[24px] p-6 border editorial-border reveal-up">
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-rose-600 font-bold block mb-1">Step 01</span>
+                        <h3 class="font-serif text-2xl text-espresso mb-4">Choose Cake Format &amp; Weight</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <button onclick="setVisFormat('Bento + 2 Cupcakes Combo', 749, false)" class="vis-fmt-btn p-3.5 rounded-2xl border editorial-border text-left hover:border-espresso transition-colors">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold text-xs text-espresso">🍱 Bento + 2 Cupcakes Box</span>
+                                    <span class="font-serif text-lg font-bold text-rose-600">₹749</span>
+                                </div>
+                                <p class="text-[11px] text-taupe mt-0.5">350g Lunchbox Cake + 2 matching cupcakes</p>
+                            </button>
+
+                            <button onclick="setVisFormat('Heart Fudgy Brownie Slab (500g)', 699, false)" class="vis-fmt-btn p-3.5 rounded-2xl border editorial-border text-left hover:border-espresso transition-colors">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold text-xs text-espresso">🤎 Heart Brownie Slab (500g)</span>
+                                    <span class="font-serif text-lg font-bold text-rose-600">₹699</span>
+                                </div>
+                                <p class="text-[11px] text-taupe mt-0.5">"Happy Birthday Nithya" piped brownie heart</p>
+                            </button>
+
+                            <button onclick="setVisFormat('1-Tier Tall Cake (1 Kg)', 1299, false)" class="vis-fmt-btn p-3.5 rounded-2xl border-2 border-espresso bg-porcelain/50 text-left transition-colors">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold text-xs text-espresso">🎂 1-Tier Custom Cake (1 Kg)</span>
+                                    <span class="font-serif text-lg font-bold text-rose-600">₹1,299</span>
+                                </div>
+                                <p class="text-[11px] text-taupe mt-0.5">Ideal for celebrations • Coquette or Theme</p>
+                            </button>
+
+                            <button onclick="setVisFormat('2-Tier Celebration Cake (2.5 Kg)', 2499, true)" class="vis-fmt-btn p-3.5 rounded-2xl border editorial-border text-left hover:border-espresso transition-colors">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold text-xs text-espresso">✨ 2-Tier Grand Cake (2.5 Kg)</span>
+                                    <span class="font-serif text-lg font-bold text-rose-600">₹2,499</span>
+                                </div>
+                                <p class="text-[11px] text-taupe mt-0.5">Spider-Man, Ocean, Harry Potter, Butterfly</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Control 2: Frosting Palette & Signature Topper Theme -->
+                    <div class="bg-white rounded-[24px] p-6 border editorial-border space-y-5 reveal-up">
+                        <div>
+                            <span class="text-[10px] uppercase tracking-[0.2em] text-rose-600 font-bold block mb-1">Step 02</span>
+                            <h3 class="font-serif text-2xl text-espresso mb-3">Frosting Shade &amp; Signature Aesthetic</h3>
+                            
+                            <!-- Frosting Color Swatches -->
+                            <label class="text-xs font-semibold text-mocha block mb-2">Select Buttercream / Ganache Color:</label>
+                            <div class="flex flex-wrap gap-2.5">
+                                <button onclick="setVisColor('#FBF9F5', 'Vintage Ivory')" class="px-3.5 py-2 rounded-full border editorial-border bg-[#FBF9F5] text-xs font-semibold flex items-center gap-2 hover:border-espresso">
+                                    <span class="w-3.5 h-3.5 rounded-full bg-[#FBF9F5] border border-espresso/40"></span> Vintage Ivory
+                                </button>
+                                <button onclick="setVisColor('#F9E6E8', 'Blush Rose Pink')" class="px-3.5 py-2 rounded-full border editorial-border bg-[#F9E6E8] text-xs font-semibold flex items-center gap-2 hover:border-espresso">
+                                    <span class="w-3.5 h-3.5 rounded-full bg-[#E8A5B0]"></span> Blush Pink
+                                </button>
+                                <button onclick="setVisColor('#D8EEFE', 'Ocean / Spidey Sky Blue')" class="px-3.5 py-2 rounded-full border editorial-border bg-[#D8EEFE] text-xs font-semibold flex items-center gap-2 hover:border-espresso">
+                                    <span class="w-3.5 h-3.5 rounded-full bg-[#64B5F6]"></span> Ocean / Spidey Blue
+                                </button>
+                                <button onclick="setVisColor('#4A3228', 'Rich Dutch Chocolate')" class="px-3.5 py-2 rounded-full border editorial-border bg-[#4A3228] text-white text-xs font-semibold flex items-center gap-2 hover:border-espresso">
+                                    <span class="w-3.5 h-3.5 rounded-full bg-[#2B1B14] border border-white/40"></span> Dutch Truffle
+                                </button>
+                                <button onclick="setVisColor('#EDE2F8', 'Butterfly Lavender')" class="px-3.5 py-2 rounded-full border editorial-border bg-[#EDE2F8] text-xs font-semibold flex items-center gap-2 hover:border-espresso">
+                                    <span class="w-3.5 h-3.5 rounded-full bg-[#B388EB]"></span> Pastel Lavender
+                                </button>
+                                <button onclick="setVisColor('#FFF3B0', 'Racing Yellow / Gold')" class="px-3.5 py-2 rounded-full border editorial-border bg-[#FFF3B0] text-xs font-semibold flex items-center gap-2 hover:border-espresso">
+                                    <span class="w-3.5 h-3.5 rounded-full bg-[#FBC02D]"></span> Lamborghini Yellow
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Decor Style Buttons -->
+                        <div class="pt-3 border-t editorial-border">
+                            <label class="text-xs font-semibold text-mocha block mb-2">Choose Topper &amp; Piping Detail:</label>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                <button onclick="setVisDecor('bow', 'Coquette Black Bows')" class="px-3 py-2.5 rounded-xl border editorial-border text-xs font-semibold hover:bg-porcelain">
+                                    🎀 Coquette Bows
+                                </button>
+                                <button onclick="setVisDecor('hearts', 'Couple Doodle & Hearts')" class="px-3 py-2.5 rounded-xl border editorial-border text-xs font-semibold hover:bg-porcelain">
+                                    ❤️ Couple Hearts
+                                </button>
+                                <button onclick="setVisDecor('hero', 'Kids Action / Ocean')" class="px-3 py-2.5 rounded-xl border editorial-border text-xs font-semibold hover:bg-porcelain">
+                                    🕸️ Kids Theme
+                                </button>
+                                <button onclick="setVisDecor('rosette', 'Choco Truffle Rosettes')" class="px-3 py-2.5 rounded-xl border editorial-border text-xs font-semibold hover:bg-porcelain">
+                                    🍫 Crown Rosettes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Control 3: Flavor & Live Message on Cake -->
+                    <div class="bg-white rounded-[24px] p-6 border editorial-border reveal-up">
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-rose-600 font-bold block mb-1">Step 03</span>
+                        <h3 class="font-serif text-2xl text-espresso mb-4">Homemade Sponge Flavor &amp; Cake Writing</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-xs font-semibold text-mocha block mb-1.5">Inside Sponge Flavor</label>
+                                <select id="vis-flavor-select" onchange="setVisFlavor(this.value)" class="w-full px-3.5 py-2.5 rounded-xl bg-alabaster border editorial-border text-xs font-semibold text-espresso focus:outline-none">
+                                    <option value="Dutch Chocolate Truffle">Dutch Chocolate Truffle (Bestseller)</option>
+                                    <option value="Belgian Chocolate Hazelnut">Belgian Chocolate Hazelnut</option>
+                                    <option value="Red Velvet Cream Cheese">Red Velvet with Cream Cheese</option>
+                                    <option value="Fresh Strawberry Vanilla">Fresh Strawberry &amp; Vanilla Bean</option>
+                                    <option value="Butterscotch Caramel Crunch">Homemade Butterscotch Crunch</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-xs font-semibold text-mocha block mb-1.5">Custom Name / Message on Topper</label>
+                                <input type="text" id="vis-message-input" maxlength="28" value="Happy Birthday Catherine"
+                                       oninput="setVisMessage(this.value)"
+                                       placeholder="e.g. Happy Birthday Karthi"
+                                       class="w-full px-3.5 py-2.5 rounded-xl bg-alabaster border editorial-border text-xs font-semibold text-espresso focus:outline-none">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         6. STICKY STACKING SCROLL CARDS ("OUR SIGNATURE CRAFT")
+         (Replaces the removed Birthday Calculator with a luxury scroll effect!)
+         ========================================================= -->
+    <section id="craft-stack" class="py-16 sm:py-24 px-4 sm:px-8 max-w-5xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12 reveal-up">
+            <span class="text-[11px] uppercase tracking-[0.22em] text-rose-600 font-bold block mb-1.5">Scroll-Stacking Story</span>
+            <h2 class="font-serif text-4xl sm:text-5xl text-espresso">Why 719+ Clients Trust @creative_bakez</h2>
+            <p class="text-xs sm:text-sm text-mocha mt-2">Scroll down to watch our 3 pillars of homemade cake artistry stack in real time.</p>
+        </div>
+
+        <div class="space-y-8 relative">
+            <!-- Sticky Card 01 -->
+            <div class="stack-card top-24 bg-white rounded-[32px] p-6 sm:p-10 border-2 border-espresso shadow-xl">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                    <div class="md:col-span-7 space-y-3">
+                        <span class="inline-block px-3 py-1 rounded-full bg-pistachio-100 text-pistachio-700 text-[10px] font-bold uppercase tracking-widest">
+                            Pillar 01 • FSSAI Registered Hygiene
+                        </span>
+                        <h3 class="font-serif text-3xl sm:text-4xl text-espresso">100% Homemade From Scratch — Never Commercial Premix</h3>
+                        <p class="text-xs sm:text-sm text-mocha leading-relaxed">
+                            Every single sponge, dark chocolate truffle ganache, and fruit compote is baked to order in our <strong>FSSAI Registered home kitchen</strong> with zero preservatives and pure butter.
+                        </p>
+                    </div>
+                    <div class="md:col-span-5 aspect-[16/10] rounded-2xl overflow-hidden bg-porcelain">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Dutch Truffle Rosette" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky Card 02 -->
+            <div class="stack-card top-32 bg-porcelain rounded-[32px] p-6 sm:p-10 border-2 border-espresso shadow-xl">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                    <div class="md:col-span-7 space-y-3">
+                        <span class="inline-block px-3 py-1 rounded-full bg-rose-600 text-white text-[10px] font-bold uppercase tracking-widest">
+                            Pillar 02 • Custom Theme Precision
+                        </span>
+                        <h3 class="font-serif text-3xl sm:text-4xl text-espresso">From Coquette Bows to 2-Tier Kids Milestones</h3>
+                        <p class="text-xs sm:text-sm text-mocha leading-relaxed">
+                            Whether it’s a delicate <strong>"Happy Birthday Catherine" Coquette Ribbon Cake</strong>, an <strong>Ocean 2nd Birthday Cake</strong>, <strong>Spider-Man 2-Tier</strong>, or <strong>Lamborghini Racing Cake</strong>, we bring your exact reference photo to life.
+                        </p>
+                    </div>
+                    <div class="md:col-span-5 aspect-[16/10] rounded-2xl overflow-hidden bg-white">
+                        <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?auto=format&fit=crop&w=600&q=80" alt="Coquette Bow Cake" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky Card 03 -->
+            <div class="stack-card top-40 bg-espresso text-alabaster rounded-[32px] p-6 sm:p-10 border-2 border-butter shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                    <div class="md:col-span-7 space-y-3">
+                        <span class="inline-block px-3 py-1 rounded-full bg-butter text-espresso text-[10px] font-bold uppercase tracking-widest">
+                            Pillar 03 • Matching Dessert Tables
+                        </span>
+                        <h3 class="font-serif text-3xl sm:text-4xl text-white">Bento Boxes, Cupcakes, Cake Pops &amp; Belgian Cakesicles</h3>
+                        <p class="text-xs sm:text-sm text-porcelain/80 leading-relaxed">
+                            Complete your celebration with color-coordinated <strong>Cupcakes 🧁, Pearl Cake Pops 🍭, Hand-Dipped Cakesicles</strong>, and <strong>Heart Fudgy Brownie Slabs</strong>—all available via pre-order at <strong>9446430534</strong>.
+                        </p>
+                    </div>
+                    <div class="md:col-span-5 aspect-[16/10] rounded-2xl overflow-hidden bg-mocha">
+                        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80" alt="Cakesicles and Pops" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         7. REAL INSTAGRAM FEED WALL (@creative_bakez 539+ POSTS)
+         ========================================================= -->
+    <section id="real-feed" class="py-14 sm:py-16 px-4 sm:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4 reveal-up">
+            <div>
+                <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-rose-600 mb-1">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span>@creative_bakez • 539 Posts • 719+ Followers</span>
+                </div>
+                <h2 class="font-serif text-4xl sm:text-5xl text-espresso">Recent Milestones From Our Kitchen</h2>
+            </div>
+            <a href="https://www.instagram.com/creative_bakez" target="_blank" rel="noopener noreferrer" 
+               class="shimmer-btn px-5 py-2.5 rounded-full bg-porcelain hover:bg-espresso hover:text-alabaster border editorial-border text-xs font-semibold uppercase tracking-wider self-start sm:self-end">
+                Follow @creative_bakez ↗
+            </a>
+        </div>
+
+        <!-- 5-Card Real Post Story Wall (With Curtain Reveal) -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div onclick="loadVisualizerPreset('Heart Fudgy Brownie Slab (500g)', '#4A3228', 'hearts', 'Happy Birthday Nithya')" class="luxury-card rounded-2xl p-3 cursor-pointer reveal-up">
+                <div class="aspect-square rounded-xl overflow-hidden bg-porcelain mb-2.5 curtain-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=400&q=80" alt="Heart Brownie Nithya" loading="lazy" class="w-full h-full object-cover">
+                </div>
+                <p class="font-serif text-lg text-espresso leading-tight">"Happy Birthday Nithya"</p>
+                <p class="text-[11px] text-rose-600 font-semibold">Heart Brownie Slab • Tap to Try</p>
+            </div>
+
+            <div onclick="loadVisualizerPreset('2-Tier Celebration Cake (2.5 Kg)', '#D8EEFE', 'hero', 'Arvyn Rao Turns 2')" class="luxury-card rounded-2xl p-3 cursor-pointer reveal-up">
+                <div class="aspect-square rounded-xl overflow-hidden bg-porcelain mb-2.5 curtain-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&w=400&q=80" alt="Arvyn Rao Ocean Cake" loading="lazy" class="w-full h-full object-cover">
+                </div>
+                <p class="font-serif text-lg text-espresso leading-tight">"Arvyn Rao Turns 2"</p>
+                <p class="text-[11px] text-rose-600 font-semibold">Ocean Theme Cake • Tap to Try</p>
+            </div>
+
+            <div onclick="loadVisualizerPreset('1-Tier Tall Cake (1 Kg)', '#FBF9F5', 'bow', 'Happy Birthday Catherine')" class="luxury-card rounded-2xl p-3 cursor-pointer reveal-up">
+                <div class="aspect-square rounded-xl overflow-hidden bg-porcelain mb-2.5 curtain-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?auto=format&fit=crop&w=400&q=80" alt="Catherine Coquette Cake" loading="lazy" class="w-full h-full object-cover">
+                </div>
+                <p class="font-serif text-lg text-espresso leading-tight">"Happy Birthday Catherine"</p>
+                <p class="text-[11px] text-rose-600 font-semibold">Coquette Black Bow • Tap to Try</p>
+            </div>
+
+            <div onclick="loadVisualizerPreset('1-Tier Tall Cake (1 Kg)', '#FFF3B0', 'hero', 'Happy Birthday Vidhul')" class="luxury-card rounded-2xl p-3 cursor-pointer reveal-up">
+                <div class="aspect-square rounded-xl overflow-hidden bg-porcelain mb-2.5 curtain-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?auto=format&fit=crop&w=400&q=80" alt="Vidhul Lamborghini Cake" loading="lazy" class="w-full h-full object-cover">
+                </div>
+                <p class="font-serif text-lg text-espresso leading-tight">"Vidhul 4th Birthday"</p>
+                <p class="text-[11px] text-rose-600 font-semibold">Lamborghini Theme • Tap to Try</p>
+            </div>
+
+            <div onclick="loadVisualizerPreset('1-Tier Tall Cake (1 Kg)', '#4A3228', 'rosette', 'Happy Birthday Karthi')" class="luxury-card rounded-2xl p-3 cursor-pointer col-span-2 md:col-span-1 reveal-up">
+                <div class="aspect-square rounded-xl overflow-hidden bg-porcelain mb-2.5 curtain-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80" alt="Karthi Truffle Cake" loading="lazy" class="w-full h-full object-cover">
+                </div>
+                <p class="font-serif text-lg text-espresso leading-tight">"Happy Birthday Karthi"</p>
+                <p class="text-[11px] text-rose-600 font-semibold">Dutch Choco Rosette • Tap to Try</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         8. MINIMALIST EDITORIAL FOOTER
+         ========================================================= -->
+    <footer class="bg-porcelain border-t editorial-border py-14 px-4 sm:px-8 text-mocha">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b editorial-border">
+            <div class="md:col-span-5 space-y-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-espresso text-alabaster flex items-center justify-center font-serif italic text-lg">CB</div>
+                    <span class="font-serif text-2xl text-espresso">Creative Bakes (@creative_bakez)</span>
+                </div>
+                <p class="text-xs sm:text-sm leading-relaxed max-w-sm">
+                    Custom cakes | Homemade 🎂 | Cupcakes 🧁 | Cake pops 🍭 | Cakesicles. <br>
+                    <strong>FSSAI Registered Home Bakery</strong> • Pre-Orders Only.
+                </p>
+                <div class="pt-1 flex flex-wrap gap-2.5">
+                    <a href="tel:9446430534" class="shimmer-btn px-4 py-2 rounded-full bg-espresso text-alabaster text-xs font-semibold">
+                        📞 Call: 9446430534
+                    </a>
+                    <button onclick="toggleDrawer(true)" class="shimmer-btn px-4 py-2 rounded-full bg-rose-600 text-white text-xs font-semibold">
+                        🛍️ Open Pre-Order Bag
+                    </button>
+                </div>
+            </div>
+
+            <div class="md:col-span-3 space-y-2 text-xs">
+                <p class="font-bold uppercase tracking-widest text-espresso">Signature Menu</p>
+                <ul class="space-y-1.5">
+                    <li><a href="#lookbook" class="hover:text-espresso">Coquette Black Ribbon Cakes</a></li>
+                    <li><a href="#lookbook" class="hover:text-espresso">"Mr &amp; Mrs" Bento + Cupcake Combos</a></li>
+                    <li><a href="#lookbook" class="hover:text-espresso">Spider-Man, Ocean &amp; HP Theme Cakes</a></li>
+                    <li><a href="#lookbook" class="hover:text-espresso">Heart Brownie Slabs &amp; Choco Truffle</a></li>
+                    <li><a href="#lookbook" class="hover:text-espresso">Cake Pops &amp; Belgian Cakesicles</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-4 space-y-2 text-xs">
+                <p class="font-bold uppercase tracking-widest text-espresso">Pre-Order Note</p>
+                <p class="leading-relaxed">
+                    Every bake is prepared fresh from scratch in our FSSAI-registered home kitchen. Please book at least <strong>24–48 hours in advance</strong> (3–5 days for multi-tier theme cakes).
+                </p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-taupe gap-2">
+            <span>© 2026 Creative Bakes (@creative_bakez). All rights reserved.</span>
+            <span>Call / WhatsApp: +91 9446430534 • FSSAI Registered</span>
+        </div>
+    </footer>
+
+    <!-- =========================================================
+         9. SLIDE-OVER PRE-ORDER DRAWER (WHATSAPP 9446430534)
+         ========================================================= -->
+    <div id="drawer-overlay" onclick="toggleDrawer(false)" class="fixed inset-0 bg-espresso/50 z-[95] hidden"></div>
+
+    <aside id="order-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[440px] bg-alabaster border-l editorial-border z-[105] translate-x-full transition-transform duration-300 flex flex-col shadow-2xl">
+        <div class="p-5 bg-white border-b editorial-border flex items-center justify-between">
+            <div>
+                <span class="text-[10px] uppercase tracking-widest text-rose-600 font-bold block">@creative_bakez • 9446430534</span>
+                <h3 class="font-serif text-2xl text-espresso">Your Pre-Order Bag</h3>
+            </div>
+            <button onclick="toggleDrawer(false)" class="w-8 h-8 rounded-full bg-porcelain text-espresso flex items-center justify-center font-bold hover:bg-espresso hover:text-white transition-colors">✕</button>
+        </div>
+
+        <!-- Bag Items -->
+        <div id="bag-items-container" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
+
+        <!-- Checkout Footer -->
+        <div class="p-5 bg-white border-t editorial-border space-y-3.5">
+            <div class="grid grid-cols-2 gap-2.5">
+                <div>
+                    <label class="text-[10px] uppercase tracking-wider text-taupe font-bold block mb-1">Celebration Date</label>
+                    <input type="date" id="bag-date" class="w-full px-3 py-2 rounded-xl bg-alabaster border editorial-border text-xs text-espresso">
+                </div>
+                <div>
+                    <label class="text-[10px] uppercase tracking-wider text-taupe font-bold block mb-1">Your Name</label>
+                    <input type="text" id="bag-name" placeholder="e.g. Catherine / Karthi" class="w-full px-3 py-2 rounded-xl bg-alabaster border editorial-border text-xs text-espresso">
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between pt-2 border-t editorial-border">
+                <span class="text-xs uppercase tracking-widest text-taupe font-bold">Estimated Total</span>
+                <span id="bag-total-price" class="font-serif text-3xl font-bold text-espresso">₹2,048</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <button onclick="checkoutWhatsApp()" class="shimmer-btn w-full py-3.5 px-4 rounded-full bg-espresso hover:bg-pistachio-700 text-alabaster text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
+                    <span>WhatsApp 9446430534</span>
+                </button>
+                <button onclick="checkoutInstagram()" class="shimmer-btn w-full py-3.5 px-4 rounded-full bg-porcelain hover:bg-sand text-espresso text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-instagram text-rose-600 text-sm"></i>
+                    <span>Copy &amp; DM @creative_bakez</span>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- =========================================================
+         60FPS GPU-ACCELERATED JAVASCRIPT ENGINE
+         ========================================================= -->
+    <script>
+        /* ---------------------------------------------------------
+           1. AUTHENTIC @creative_bakez CATALOGUE (FROM SCREENSHOTS)
+        --------------------------------------------------------- */
+        const catalogue = [
+            {
+                id: 'c1',
+                title: 'Coquette Black Ribbon & Hearts Cake',
+                cat: 'Coquette & Theme Cakes',
+                tag: 'Viral "Catherine" Design',
+                price: 1299,
+                unit: '1 Kg Custom',
+                img: 'https://images.unsplash.com/photo-1562440499-64c9a111f713?auto=format&fit=crop&w=600&q=80',
+                desc: 'Smooth vintage ivory frosting adorned with black satin coquette bows and hand-piped mini black hearts.'
+            },
+            {
+                id: 'c2',
+                title: '"I Choose You Everyday" Bento + 2 Cupcakes',
+                cat: 'Bento & Combos',
+                tag: 'Couple Bestseller',
+                price: 749,
+                unit: 'Bento + 2 Cupcakes',
+                img: 'https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=600&q=80',
+                desc: 'Cute hand-doodled couple illustration lunchbox cake paired with 2 matching comic cupcakes.'
+            },
+            {
+                id: 'c3',
+                title: '"Mr & Mrs" Romantic Bento Lunchbox Cake',
+                cat: 'Bento & Combos',
+                tag: 'Anniversary Gift',
+                price: 499,
+                unit: '350g Bento Box',
+                img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80',
+                desc: 'Adorable bride & groom cartoon couple bento cake tucked inside an eco gift box.'
+            },
+            {
+                id: 'c4',
+                title: 'Spider-Man 2-Tier 3rd Birthday Cake',
+                cat: 'Coquette & Theme Cakes',
+                tag: '2-Tier Superhero',
+                price: 2499,
+                unit: '2.5 Kg 2-Tier',
+                img: 'https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&w=600&q=80',
+                desc: 'Sky-blue & white 2-tier milestone cake with edible spiderwebs, city skyline, and glitter spheres.'
+            },
+            {
+                id: 'c5',
+                title: 'Under-The-Sea 2nd Birthday Cake ("Arvyn Rao")',
+                cat: 'Coquette & Theme Cakes',
+                tag: 'Kids Milestone',
+                price: 1899,
+                unit: '1.5 Kg Theme',
+                img: 'https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?auto=format&fit=crop&w=600&q=80',
+                desc: 'Ocean blue frosting with handcrafted clownfish, dolphin, sea turtle, coral reefs, and name banner.'
+            },
+            {
+                id: 'c6',
+                title: 'Harry Potter "Potterhead 9¾" Custom Cake',
+                cat: 'Coquette & Theme Cakes',
+                tag: 'Hogwarts Edition',
+                price: 1399,
+                unit: '1 Kg Custom',
+                img: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=600&q=80',
+                desc: 'Gryffindor gold & crimson wave cake topped with Golden Snitch, glasses, and Hogwarts trio toppers.'
+            },
+            {
+                id: 'c7',
+                title: 'Heart-Shaped Fudgy Brownie Slab ("Nithya")',
+                cat: 'Truffle & Brownie Slabs',
+                tag: '100% Homemade Fudge',
+                price: 699,
+                unit: '500g Heart Slab',
+                img: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80',
+                desc: 'Rich dark chocolate brownie heart piped with chocolate ganache lines, hearts, and gold message plaque.'
+            },
+            {
+                id: 'c8',
+                title: 'Dutch Chocolate Truffle Rosette Cake ("Karthi")',
+                cat: 'Truffle & Brownie Slabs',
+                tag: 'Signature Truffle',
+                price: 1199,
+                unit: '1 Kg Truffle',
+                img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80',
+                desc: 'Silky dark chocolate ganache cake crowned with piped truffle rosettes and custom name lettering.'
+            },
+            {
+                id: 'c9',
+                title: 'Artisan Belgian Cakesicles & Cake Pops Box',
+                cat: 'Cupcakes & Cakesicles',
+                tag: 'Party Dessert Table',
+                price: 799,
+                unit: '4 Cakesicles + 6 Pops',
+                img: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80',
+                desc: 'Hand-dipped pastel chocolate cakesicles and pearl-dusted cake pops customized to your party theme.'
+            },
+            {
+                id: 'c10',
+                title: 'Hand-Piped Custom Theme Cupcakes (Box of 6)',
+                cat: 'Cupcakes & Cakesicles',
+                tag: 'Freshly Whipped',
+                price: 450,
+                unit: 'Box of 6',
+                img: 'https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&w=600&q=80',
+                desc: 'Soft homemade vanilla or chocolate cupcakes with custom doodles, butterflies, or gold toppers.'
+            }
+        ];
+
+        let activeCat = 'all';
+        let globalEggless = false;
+        let revealObserver;
+
+        function scrollShowcase(offset) {
+            const track = document.getElementById('showcase-track');
+            if (track) track.scrollBy({ left: offset, behavior: 'smooth' });
+        }
+
+        function renderLookbook() {
+            const grid = document.getElementById('lookbook-grid');
+            const items = activeCat === 'all' ? catalogue : catalogue.filter(i => i.cat === activeCat);
+
+            grid.innerHTML = items.map((item, idx) => `
+                <article class="luxury-card rounded-[28px] p-4 flex flex-col justify-between reveal-up" style="transition-delay: ${(idx % 3) * 80}ms">
+                    <div>
+                        <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-porcelain mb-4 relative curtain-img-wrap">
+                            <img src="${item.img}" alt="${item.title}" loading="lazy" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/95 text-espresso text-[10px] font-bold uppercase tracking-wider shadow-sm">
+                                ${item.tag}
+                            </span>
+                            <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-pistachio-100 text-pistachio-700 text-[10px] font-bold">
+                                ${globalEggless ? '✓ 100% Eggless' : 'Egg / Eggless'}
+                            </span>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-widest text-rose-600 font-bold">${item.cat}</span>
+                        <h3 class="font-serif text-2xl text-espresso mt-0.5 leading-snug">${item.title}</h3>
+                        <p class="text-xs text-mocha mt-1.5 leading-relaxed">${item.desc}</p>
+
+                        <!-- Quick Custom Message Input on Card -->
+                        <div class="mt-3 pt-3 border-t editorial-border">
+                            <input type="text" id="msg-${item.id}" placeholder="Optional: Name / Message on cake..." 
+                                   class="w-full px-3 py-2 rounded-xl bg-alabaster border editorial-border text-xs text-espresso focus:outline-none focus:border-espresso">
+                        </div>
+                    </div>
+
+                    <div class="pt-4 mt-3 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] uppercase tracking-widest text-taupe block">${item.unit}</span>
+                            <span class="font-serif text-3xl font-bold text-espresso">₹${item.price.toLocaleString('en-IN')}</span>
+                        </div>
+                        <button onclick="quickAddLookbookItem('${item.id}')" class="shimmer-btn px-5 py-2.5 rounded-full bg-espresso hover:bg-rose-600 text-alabaster text-xs font-semibold uppercase tracking-wider">
+                            + Pre-Order
+                        </button>
+                    </div>
+                </article>
+            `).join('');
+
+            if (revealObserver) {
+                grid.querySelectorAll('.reveal-up, .curtain-img-wrap').forEach(el => revealObserver.observe(el));
+            }
+        }
+
+        function setLookbookCategory(cat) {
+            activeCat = cat;
+            document.querySelectorAll('.lookbook-tab').forEach(btn => {
+                if (btn.dataset.tab === cat) {
+                    btn.className = 'lookbook-tab shimmer-btn px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-espresso text-alabaster shrink-0';
+                } else {
+                    btn.className = 'lookbook-tab shimmer-btn px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-porcelain text-mocha hover:text-espresso shrink-0';
+                }
+            });
+            renderLookbook();
+        }
+
+        function jumpToCategory(cat) {
+            setLookbookCategory(cat);
+            document.getElementById('lookbook').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function toggleGlobalEggless(checked) {
+            globalEggless = checked;
+            renderLookbook();
+            notify(checked ? 'Switched menu to 100% Eggless Homemade mode!' : 'Showing standard Egg & Eggless options.');
+        }
+
+        /* ---------------------------------------------------------
+           2. LIVE INTERACTIVE SVG CAKE VISUALIZER LOGIC
+        --------------------------------------------------------- */
+        let visState = {
+            format: '1-Tier Tall Cake (1 Kg)',
+            price: 1299,
+            isTwoTier: false,
+            colorHex: '#FBF9F5',
+            colorName: 'Vintage Ivory',
+            decorCode: 'bow',
+            decorName: 'Coquette Black Bows',
+            flavor: 'Dutch Chocolate Truffle',
+            message: 'Happy Birthday Catherine'
+        };
+
+        function pulseVisualizerBox() {
+            const box = document.getElementById('svg-preview-box');
+            if (!box) return;
+            box.style.transform = 'scale(0.985)';
+            setTimeout(() => { box.style.transform = 'scale(1)'; }, 180);
+        }
+
+        function syncVisualizerSVG() {
+            document.getElementById('vis-badge-style').textContent = visState.format;
+            document.getElementById('vis-flavor-label').textContent = visState.flavor;
+            document.getElementById('vis-decor-label').textContent = visState.decorName;
+            document.getElementById('vis-price-display').textContent = `₹${visState.price.toLocaleString('en-IN')}`;
+            document.getElementById('svg-topper-text').textContent = visState.message || 'Happy Birthday!';
+
+            document.getElementById('svg-bottom-body').setAttribute('fill', visState.colorHex);
+            document.getElementById('svg-bottom-top').setAttribute('fill', visState.colorHex);
+            document.getElementById('svg-top-body').setAttribute('fill', visState.colorHex);
+            document.getElementById('svg-top-surface').setAttribute('fill', visState.colorHex);
+
+            const secondTier = document.getElementById('svg-second-tier');
+            if (visState.isTwoTier) {
+                secondTier.classList.remove('hidden');
+            } else {
+                secondTier.classList.add('hidden');
+            }
+
+            const decorLayer = document.getElementById('svg-decor-layer');
+            if (visState.decorCode === 'bow') {
+                decorLayer.innerHTML = `
+                    <text x="95" y="168" font-size="22">🎀</text>
+                    <text x="202" y="168" font-size="22">🎀</text>
+                    <text x="148" y="185" font-size="18">🖤</text>
+                    <text x="118" y="205" font-size="13">🖤</text>
+                    <text x="185" y="205" font-size="13">🖤</text>
+                `;
+            } else if (visState.decorCode === 'hearts') {
+                decorLayer.innerHTML = `
+                    <text x="100" y="172" font-size="20">❤️</text>
+                    <text x="148" y="182" font-size="24">👩‍❤️‍👨</text>
+                    <text x="200" y="172" font-size="20">❤️</text>
+                    <text x="125" y="208" font-size="14">💕</text>
+                    <text x="180" y="208" font-size="14">💕</text>
+                `;
+            } else if (visState.decorCode === 'hero') {
+                decorLayer.innerHTML = `
+                    <text x="95" y="175" font-size="22">🕸️</text>
+                    <text x="148" y="182" font-size="24">⭐</text>
+                    <text x="200" y="175" font-size="22">🐬</text>
+                    <text x="125" y="208" font-size="16">🎈</text>
+                    <text x="182" y="208" font-size="16">🏎️</text>
+                `;
+            } else {
+                decorLayer.innerHTML = `
+                    <text x="90" y="140" font-size="18">🍫</text>
+                    <text x="125" y="142" font-size="18">🍫</text>
+                    <text x="160" y="142" font-size="18">🍫</text>
+                    <text x="195" y="140" font-size="18">🍫</text>
+                    <text x="148" y="188" font-size="22">✨</text>
+                `;
+            }
+        }
+
+        function setVisFormat(name, price, isTwoTier) {
+            visState.format = name;
+            visState.price = price;
+            visState.isTwoTier = isTwoTier;
+            pulseVisualizerBox();
+            syncVisualizerSVG();
+        }
+
+        function setVisColor(hex, name) {
+            visState.colorHex = hex;
+            visState.colorName = name;
+            pulseVisualizerBox();
+            syncVisualizerSVG();
+        }
+
+        function setVisDecor(code, label) {
+            visState.decorCode = code;
+            visState.decorName = label;
+            pulseVisualizerBox();
+            syncVisualizerSVG();
+        }
+
+        function setVisFlavor(val) {
+            visState.flavor = val;
+            syncVisualizerSVG();
+        }
+
+        function setVisMessage(val) {
+            visState.message = val;
+            syncVisualizerSVG();
+        }
+
+        function loadVisualizerPreset(format, colorHex, decorCode, message) {
+            visState.format = format;
+            visState.price = format.includes('2-Tier') ? 2499 : (format.includes('Bento') ? 749 : (format.includes('Brownie') ? 699 : 1299));
+            visState.isTwoTier = format.includes('2-Tier');
+            visState.colorHex = colorHex;
+            visState.decorCode = decorCode;
+            visState.decorName = decorCode === 'bow' ? 'Coquette Black Bows' : (decorCode === 'hearts' ? 'Couple Doodle & Hearts' : (decorCode === 'hero' ? 'Kids Theme Toppers' : 'Choco Rosettes'));
+            visState.message = message;
+            document.getElementById('vis-message-input').value = message;
+            syncVisualizerSVG();
+            document.getElementById('cake-visualizer').scrollIntoView({ behavior: 'smooth' });
+            notify(`Loaded "${message}" preset into the Live Visualizer!`);
+        }
+
+        function addVisualizedCakeToBag() {
+            bag.push({
+                title: `Custom ${visState.format}`,
+                meta: `${visState.flavor} • ${visState.colorName} • ${visState.decorName}`,
+                note: `Topper Message: "${visState.message}"`,
+                price: visState.price,
+                qty: 1
+            });
+            renderBag(true);
+            toggleDrawer(true);
+            notify('Added your custom visualized cake to the Pre-Order Bag!');
+        }
+
+        /* ---------------------------------------------------------
+           3. PRE-ORDER BAG & DUAL FLOATING + HEADER SYNC
+        --------------------------------------------------------- */
+        let bag = [
+            {
+                title: 'Coquette Black Ribbon & Hearts Cake',
+                meta: '1 Kg Custom • Vintage Ivory',
+                note: 'Message: "Happy Birthday Catherine"',
+                price: 1299,
+                qty: 1
+            },
+            {
+                title: '"I Choose You Everyday" Bento + 2 Cupcakes',
+                meta: 'Bento + 2 Cupcakes Combo',
+                note: 'Couple Doodle Style',
+                price: 749,
+                qty: 1
+            }
+        ];
+
+        function quickAddLookbookItem(id) {
+            const item = catalogue.find(i => i.id === id);
+            if (!item) return;
+            const customMsgEl = document.getElementById(`msg-${id}`);
+            const customMsg = customMsgEl && customMsgEl.value.trim() ? `Message: "${customMsgEl.value.trim()}"` : 'Standard Piping';
+
+            bag.push({
+                title: item.title,
+                meta: `${item.unit}${globalEggless ? ' • 100% Eggless' : ''}`,
+                note: customMsg,
+                price: item.price,
+                qty: 1
+            });
+            if (customMsgEl) customMsgEl.value = '';
+            renderBag(true);
+            notify(`Added "${item.title}" to your Pre-Order Bag!`);
+        }
+
+        function updateBagQty(idx, delta) {
+            bag[idx].qty += delta;
+            if (bag[idx].qty <= 0) bag.splice(idx, 1);
+            renderBag(true);
+        }
+
+        function renderBag(animateBump = false) {
+            const count = bag.reduce((s, i) => s + i.qty, 0);
+            const total = bag.reduce((s, i) => s + i.price * i.qty, 0);
+            const formattedTotal = `₹${total.toLocaleString('en-IN')}`;
+
+            // Sync BOTH Top Header Bag & Sticky Bottom-Right Floating Bag!
+            document.getElementById('header-bag-count').textContent = count;
+            document.getElementById('floating-bag-count').textContent = count;
+            document.getElementById('floating-bag-total').textContent = formattedTotal;
+            document.getElementById('bag-total-price').textContent = formattedTotal;
+
+            if (animateBump) {
+                const floatPill = document.getElementById('floating-bag-pill');
+                const topBtn = document.getElementById('top-bag-btn');
+                [floatPill, topBtn].forEach(el => {
+                    if (!el) return;
+                    el.classList.remove('bag-bump');
+                    void el.offsetWidth;
+                    el.classList.add('bag-bump');
+                });
+            }
+
+            const container = document.getElementById('bag-items-container');
+            if (bag.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-14 text-taupe">
+                        <p class="font-serif text-2xl text-espresso">Your Pre-Order Bag is Empty</p>
+                        <p class="text-xs mt-1">Add a Custom Cake, Bento Box, or Brownie Slab!</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = bag.map((item, idx) => `
+                    <div class="p-3.5 rounded-2xl bg-white border editorial-border flex items-center justify-between gap-3">
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg text-espresso leading-tight">${item.title}</h4>
+                            <p class="text-[11px] font-semibold text-rose-600 mt-0.5">${item.meta}</p>
+                            <p class="text-[11px] text-taupe">${item.note}</p>
+                            <p class="text-xs font-bold text-espresso mt-1">₹${(item.price * item.qty).toLocaleString('en-IN')}</p>
+                        </div>
+                        <div class="flex items-center gap-2 bg-porcelain px-2.5 py-1 rounded-full border editorial-border">
+                            <button onclick="updateBagQty(${idx}, -1)" class="text-xs font-bold px-1">-</button>
+                            <span class="text-xs font-bold">${item.qty}</span>
+                            <button onclick="updateBagQty(${idx}, 1)" class="text-xs font-bold px-1">+</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function toggleDrawer(open) {
+            const drawer = document.getElementById('order-drawer');
+            const overlay = document.getElementById('drawer-overlay');
+            if (open) {
+                overlay.classList.remove('hidden');
+                drawer.classList.remove('translate-x-full');
+            } else {
+                overlay.classList.add('hidden');
+                drawer.classList.add('translate-x-full');
+            }
+        }
+
+        function formatOrderMessage() {
+            const date = document.getElementById('bag-date').value || 'Upcoming Slot';
+            const name = document.getElementById('bag-name').value || 'Valued Client';
+            const total = bag.reduce((s, i) => s + i.price * i.qty, 0);
+
+            let lines = [
+                `🎂 *NEW PRE-ORDER — CREATIVE BAKES (@creative_bakez)* 🎂`,
+                `----------------------------------`
+            ];
+            bag.forEach((item, i) => {
+                lines.push(`${i + 1}. *${item.title}* (${item.meta}) x${item.qty} — ₹${item.price * item.qty}`);
+                if (item.note) lines.push(`   ✨ ${item.note}`);
+            });
+            lines.push(`----------------------------------`);
+            lines.push(`👤 *Client:* ${name}`);
+            lines.push(`📅 *Pre-Order Date:* ${date}`);
+            lines.push(`💰 *Estimated Total:* ₹${total.toLocaleString('en-IN')}`);
+            lines.push(`📞 *Studio Line:* 9446430534`);
+            return lines.join('\n');
+        }
+
+        function checkoutWhatsApp() {
+            if (bag.length === 0) return notify('Your Pre-Order Bag is empty!');
+            const text = encodeURIComponent(formatOrderMessage());
+            window.open(`https://wa.me/919446430534?text=${text}`, '_blank');
+        }
+
+        function checkoutInstagram() {
+            if (bag.length === 0) return notify('Your Pre-Order Bag is empty!');
+            const msg = formatOrderMessage();
+            const area = document.createElement('textarea');
+            area.value = msg;
+            document.body.appendChild(area);
+            area.select();
+            document.execCommand('copy');
+            document.body.removeChild(area);
+            notify('Order copied! Opening @creative_bakez Instagram...');
+            setTimeout(() => window.open('https://www.instagram.com/creative_bakez', '_blank'), 800);
+        }
+
+        function notify(text) {
+            const stack = document.getElementById('toast-stack');
+            const el = document.createElement('div');
+            el.className = 'bg-espresso text-alabaster px-4 py-3 rounded-2xl text-xs font-semibold shadow-xl border border-butter/40 flex items-center gap-2 transition-all';
+            el.innerHTML = `<span class="text-butter">✨</span><span>${text}</span>`;
+            stack.appendChild(el);
+            setTimeout(() => el.remove(), 2600);
+        }
+
+        /* ---------------------------------------------------------
+           4. UNIFIED 60FPS SCROLL & INTERSECTION ANIMATION ENGINE
+        --------------------------------------------------------- */
+        window.addEventListener('DOMContentLoaded', () => {
+            // Trigger opening split curtain & hero text mask reveal
+            requestAnimationFrame(() => {
+                document.body.classList.add('loaded');
+            });
+
+            const twoDays = new Date();
+            twoDays.setDate(twoDays.getDate() + 2);
+            document.getElementById('bag-date').value = twoDays.toISOString().split('T')[0];
+
+            // Setup IntersectionObserver for Curtain Image Unveil & Staggered Cards
+            revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            renderLookbook();
+            syncVisualizerSVG();
+            renderBag(false);
+
+            document.querySelectorAll('.reveal-up, .curtain-img-wrap').forEach(el => {
+                revealObserver.observe(el);
+            });
+
+            // Unified 60FPS requestAnimationFrame Scroll Progress & Parallax Engine
+            const progressBar = document.getElementById('scroll-progress');
+            const parallaxNode = document.querySelector('[data-parallax]');
+            let ticking = false;
+
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const scrollTop = window.scrollY;
+                        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                        const progress = docHeight > 0 ? Math.min(1, Math.max(0, scrollTop / docHeight)) : 0;
+
+                        if (progressBar) {
+                            progressBar.style.transform = `scaleX(${progress})`;
+                        }
+                        if (parallaxNode && window.innerWidth >= 1024 && scrollTop < 900) {
+                            const rate = parseFloat(parallaxNode.dataset.parallax || '-0.04');
+                            parallaxNode.style.transform = `translate3d(0, ${scrollTop * rate}px, 0)`;
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        });
+    </script>
+</body>
+</html>
